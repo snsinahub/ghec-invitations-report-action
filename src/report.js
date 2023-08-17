@@ -70,7 +70,7 @@ class Report {
    * @param {String[]} [records=[]] Array of organization logins
    */
   async getOrganizations(cursor = null, records = []) {
-    const enterprise = this.enterprise
+    console.log("enterprise:", this.enterprise)
     // const {
     //   enterprise: {
     //     organizations: {nodes, pageInfo},
