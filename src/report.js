@@ -77,7 +77,7 @@ class Report {
     //   },
     // } 
     const orgs = await this.octokit.graphql(
-      `query ("${enterprise}": String!, $cursor: String = null) {
+      `
             enterprise(slug: "${enterprise}") {
               organizations(first: 100, after: "${cursor}") {
                 nodes {
@@ -89,8 +89,7 @@ class Report {
                 }
               }
             }
-          }`,
-      {enterprise: this.enterprise, cursor},
+          `
     )
 
     console.log("SOME", JSON.stringify(orgs))
