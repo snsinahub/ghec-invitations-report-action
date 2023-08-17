@@ -70,15 +70,14 @@ class Report {
    * @param {String[]} [records=[]] Array of organization logins
    */
   async getOrganizations(cursor = null, records = []) {
-    console.log("enterprise:", this.enterprise)
-    let enterprise = this.enterprise
+    
     const {
       enterprise: {
         organizations: {nodes, pageInfo},
       },
     } = await this.octokit.graphql(
-      `query ($enterprise: String!, $cursor: String = null) {
-  enterprise(slug: $enterprise) {
+      `query ($this.enterprise: String!, $cursor: String = null) {
+  enterprise(slug: $this.enterprise) {
     organizations(first: 100, after: $cursor) {
       nodes {
         login
