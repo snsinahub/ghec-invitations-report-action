@@ -232,6 +232,7 @@ class Report {
         await this.getFailedInvitations(org, invitees)
       }
     } else {
+      console.log("No org:", enterprise)
       await this.getPendingInvitations(owner, invitees)
       await this.getFailedInvitations(owner, invitees)
     }
