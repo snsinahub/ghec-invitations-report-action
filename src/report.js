@@ -69,7 +69,7 @@ class Report {
    * @param {String} [cursor=null]  GraphQL cursor for pagination
    * @param {String[]} [records=[]] Array of organization logins
    */
-  async getOrganizations(cursor = null, records = []) {
+  async getOrganizations(enterprise, cursor = null, records = []) {
     console.log("enterprise:", enterprise)
     const {
       enterprise: {
@@ -97,7 +97,7 @@ class Report {
     }
 
     if (pageInfo.hasNextPage) {
-      await this.getOrganizations(pageInfo.endCursor, records)
+      await this.getOrganizations(enterprise, pageInfo.endCursor, records)
     }
 
     return records
