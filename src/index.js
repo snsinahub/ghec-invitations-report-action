@@ -6,6 +6,7 @@ const dayjs = require('dayjs')
 const Report = require('./report')
 
 const run = async () => {
+  console.log("Started:")
   try {
     const reportPath = core.getInput('report_path', {required: false}) || 'invitation-report.csv'
     const committerName = core.getInput('committer_name', {required: false}) || 'invitation-reporter[bot]'
@@ -40,6 +41,7 @@ const run = async () => {
     core.setOutput('head_sha', after)
   } catch (error) {
     core.setFailed(error.message)
+    console.log("error", error.message)
   }
 }
 
