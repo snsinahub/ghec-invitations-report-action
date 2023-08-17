@@ -23,6 +23,7 @@ const run = async () => {
     const octokit = await new github.getOctokit(token)
 
     const {owner, repo} = github.context.repo
+    console.log(owner, repo)
 
     const report = new Report(octokit, {
       fp: reportPath,
