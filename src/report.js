@@ -222,6 +222,7 @@ class Report {
     if (enterprise !== '') {
       // get all orgs in the GitHub Enterprise Cloud account first
       const orgs = await this.getOrganizations()
+      console.log("orgs:", orgs)
 
       for (const org of orgs) {
         await this.getPendingInvitations(org, invitees)
