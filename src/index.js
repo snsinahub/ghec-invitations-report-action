@@ -43,7 +43,7 @@ async function run () {
     core.setOutput('head_sha', after)
   } catch (error) {
     core.setFailed(error.message)
-    console.log("error", JSON.stringify(error, '', 2))
+    console.log("error", JSON.stringify(error))
   }
 }
 console.log("Outside:")
