@@ -69,28 +69,30 @@ class Report {
    * @param {String} [cursor=null]  GraphQL cursor for pagination
    * @param {String[]} [records=[]] Array of organization logins
    */
-  async getOrganizations(cursor = null, records = []) {
-    const enterprise = this.enterprise
+  async getOrganizations(cursor = null, records = [], enterprise = this.enterprise) {
+    
     const {
       enterprise: {
         organizations: {nodes, pageInfo},
       },
     } = await this.octokit.graphql(
       `query ($enterprise: String!, $cursor: String = null) {
-  enterprise(slug: $enterprise) {
-    organizations(first: 100, after: $cursor) {
-      nodes {
-        login
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }
-}`,
+            enterprise(slug: $enterprise) {
+              organizations(first: 100, after: $cursor) {
+                nodes {
+                  login
+                }
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+              }
+            }
+          }`,
       {enterprise: this.enterprise, cursor},
     )
+
+    console.log("SOME")
 
     for (const node of nodes) {
       records.push(node.login)
