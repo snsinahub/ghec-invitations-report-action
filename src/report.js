@@ -48,7 +48,7 @@ class Report {
    * @param {String} [options.enterprise] GitHub Enterprise Cloud slug
    */
   constructor(octokit, {fp, owner, repo, enterprise = ''}) {
-    console.log("before")
+    
     this.octokit = octokit
 
     this.path = fp

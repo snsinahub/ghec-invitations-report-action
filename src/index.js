@@ -34,6 +34,7 @@ async function run () {
       repo,
       enterprise,
     })
+    console.log("before")
     report.reportDate = dayjs().toISOString()
     const {before, after} = await report.create()
 
