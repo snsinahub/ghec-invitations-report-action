@@ -5,7 +5,7 @@ const dayjs = require('dayjs')
 
 const Report = require('./report')
 
-const run = async () => {
+async function run () {
   console.log("Started:")
   try {
     const reportPath = core.getInput('report_path', {required: false}) || 'invitation-report.csv'
