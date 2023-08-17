@@ -71,11 +71,12 @@ class Report {
    */
   async getOrganizations(cursor = null, records = [], enterprise = this.enterprise) {
     
-    const {
-      enterprise: {
-        organizations: {nodes, pageInfo},
-      },
-    } = await this.octokit.graphql(
+    // const {
+    //   enterprise: {
+    //     organizations: {nodes, pageInfo},
+    //   },
+    // } 
+    const orgs = await this.octokit.graphql(
       `query ($enterprise: String!, $cursor: String = null) {
             enterprise(slug: $enterprise) {
               organizations(first: 100, after: $cursor) {
@@ -92,7 +93,7 @@ class Report {
       {enterprise: this.enterprise, cursor},
     )
 
-    console.log("SOME")
+    console.log("SOME", JSON.stringify(orgs))
 
     for (const node of nodes) {
       records.push(node.login)
