@@ -44,5 +44,5 @@ async function run () {
     console.log("error", error.message)
   }
 }
-
+console.log("Outside:")
 run();
