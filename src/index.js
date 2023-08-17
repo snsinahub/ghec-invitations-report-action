@@ -25,6 +25,7 @@ async function run () {
 
     const {owner, repo} = github.context.repo
     console.log("owner:", owner, repo)
+    console.log("before")
 
     const report = new Report(octokit, {
       fp: reportPath,
@@ -34,7 +35,7 @@ async function run () {
       repo,
       enterprise,
     })
-    console.log("before")
+    
     report.reportDate = dayjs().toISOString()
     const {before, after} = await report.create()
 
