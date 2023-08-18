@@ -82,11 +82,7 @@ class Report {
               organizations(first: 100) {
                 nodes {
                   login
-                }
-                pageInfo {
-                  hasNextPage
-                  endCursor
-                }
+                }                
               }
             }
           }`
