@@ -1,7 +1,7 @@
 const dayjs = require('dayjs')
 const stringify = require('csv-stringify/lib/sync')
 const { graphql } = require("@octokit/graphql");
-import fetch from "node-fetch";
+const { fetch } = require("node-fetch");
 
 
 /**
