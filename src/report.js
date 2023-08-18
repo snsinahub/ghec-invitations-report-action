@@ -1,6 +1,8 @@
 const dayjs = require('dayjs')
 const stringify = require('csv-stringify/lib/sync')
 const { graphql } = require("@octokit/graphql");
+import fetch from "node-fetch";
+
 
 /**
  * @typedef Invitation
@@ -81,6 +83,7 @@ class Report {
     const graphqlWithAuth = graphql.defaults({
       headers: {
           authorization: `token ${this.token}`,
+          fetch: fetch,
       },
     });
     const orgs = await graphqlWithAuth(
