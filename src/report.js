@@ -78,7 +78,7 @@ class Report {
     // } 
     const orgs = await this.octokit.graphql(
       ` query ($enterprise: String! $cursor: String) {
-            enterprise(slug: "${this.enterprise}") {
+            enterprise(slug: $enterprise") {
               name
               organizations(first: 100) {
                 nodes {
