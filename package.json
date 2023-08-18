@@ -59,5 +59,6 @@
       "**/*.t.js"
     ],
     "verbose": false
-  }
+  },
+  "type": "module"
 }
