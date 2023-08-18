@@ -1,5 +1,6 @@
 const dayjs = require('dayjs')
 const stringify = require('csv-stringify/lib/sync')
+const { graphql } = require("@octokit/graphql");
 
 /**
  * @typedef Invitation
