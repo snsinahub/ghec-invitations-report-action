@@ -47,7 +47,7 @@ class Report {
    * @param {String} options.repo         Oganization repository
    * @param {String} [options.enterprise] GitHub Enterprise Cloud slug
    */
-  constructor(octokit, {fp, owner, repo, enterprise = ''}) {
+  constructor(octokit, {fp, owner, repo, enterprise = '', token}) {
     
     this.octokit = octokit
 
@@ -57,6 +57,7 @@ class Report {
     this.owner = owner
     this.repo = repo
     this.enterprise = enterprise
+    this.token = token
 
     this.date = dayjs().toISOString()
     console.log("after")
@@ -76,7 +77,12 @@ class Report {
     //     organizations: {nodes, pageInfo},
     //   },
     // } 
-    const orgs = await this.octokit.graphql(
+    const graphqlWithAuth = graphql.defaults({
+      headers: {
+          authorization: `token ${this.token}`,
+      },
+    });
+    const orgs = await graphqlWithAuth(
       ` query ($enterprise: String!) {
             enterprise(slug: $enterprise") {
               name

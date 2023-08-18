@@ -34,6 +34,7 @@ async function run () {
       owner,
       repo,
       enterprise,
+      token
     })
     
     report.reportDate = dayjs().toISOString()
