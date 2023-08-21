@@ -88,18 +88,18 @@ class Report {
     //     fetch: fetch,
     //   },
     // });
-    const orgs = await this.octokit.graphql(
-      ` query ($enterprise: String!) {
-            enterprise(slug: $enterprise") {
-              name
-              organizations(first: 100) {
-                nodes {
-                  login
-                }                
-              }
-            }
-          }`
-    )
+    // const orgs = await this.octokit.graphql(
+    //   ` query ($enterprise: String!) {
+    //         enterprise(slug: $enterprise") {
+    //           name
+    //           organizations(first: 100) {
+    //             nodes {
+    //               login
+    //             }                
+    //           }
+    //         }
+    //       }`
+    // )
 
     console.log("SOME", JSON.stringify(orgs))
 
