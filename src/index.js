@@ -29,12 +29,6 @@ async function run () {
         fetch: fetch,
       },
     });
-    // const octokit = await new Octokit({
-    //   auth: token,
-    //   request: {
-    //     fetch: fetch
-    //   }
-    // })
 
     const {owner, repo} = github.context.repo
     console.log("owner:", owner, repo)
