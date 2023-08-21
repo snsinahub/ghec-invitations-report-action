@@ -24,7 +24,10 @@ async function run () {
     const enterprise = core.getInput('enterprise', {required: false})
     const token = core.getInput('token', {required: true})
     const octokit = new Octokit({ 
-      auth: token
+      auth: token,
+      request: {
+        fetch: fetch,
+      },
     });
     // const octokit = await new Octokit({
     //   auth: token,
