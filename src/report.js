@@ -80,15 +80,15 @@ class Report {
     //     organizations: {nodes, pageInfo},
     //   },
     // } 
-    const graphqlWithAuth = graphql.defaults({
-      headers: {
-          authorization: `token ${this.token}`,          
-      },
-      request: {
-        fetch: fetch,
-      },
-    });
-    const orgs = await graphqlWithAuth(
+    // const graphqlWithAuth = graphql.defaults({
+    //   headers: {
+    //       authorization: `token ${this.token}`,          
+    //   },
+    //   request: {
+    //     fetch: fetch,
+    //   },
+    // });
+    const orgs = await this.octokit.graphql(
       ` query ($enterprise: String!) {
             enterprise(slug: $enterprise") {
               name
