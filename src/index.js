@@ -3,7 +3,9 @@ const core = require('@actions/core')
 const github = require('@actions/github')
 const { Octokit, App } = require("octokit");
 const dayjs = require('dayjs')
-const { fetch } = require("node-fetch");
+// const { fetch } = require("node-fetch");
+import fetch from "node-fetch";
+
 
 const Report = require('./report')
 
