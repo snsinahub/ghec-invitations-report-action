@@ -82,10 +82,10 @@ class Report {
     // } 
     const graphqlWithAuth = graphql.defaults({
       headers: {
-          authorization: `token ${this.token}`,
-          request: {
-            fetch: fetch,
-          },
+          authorization: `token ${this.token}`,          
+      },
+      request: {
+        fetch: fetch,
       },
     });
     const orgs = await graphqlWithAuth(
