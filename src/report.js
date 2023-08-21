@@ -232,7 +232,7 @@ class Report {
 
     // CSV header
     const invitees = [Report.header]
-    console.log("enterprise:", enterprise)
+    console.log("enterprise index.js:", enterprise)
 
     if (enterprise !== '') {
       // get all orgs in the GitHub Enterprise Cloud account first
