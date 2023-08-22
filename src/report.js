@@ -93,7 +93,7 @@ class Report {
       },
     });
     const orgs = await graphqlWithAuth(
-      ` query ($enterprise: String!) {
+      ` {
             enterprise(slug: $enterprise") {
               name
               organizations(first: 100) {
