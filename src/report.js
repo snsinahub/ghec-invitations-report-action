@@ -109,7 +109,7 @@ class Report {
 
     console.log("SOME", JSON.stringify(orgs))
 
-    for (const node of nodes) {
+    for (const node of orgs.enterprise.organizations.nodes) {
       records.push(node.login)
     }
 
