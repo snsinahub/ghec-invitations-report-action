@@ -113,9 +113,9 @@ class Report {
       records.push(node.login)
     }
 
-    if (pageInfo.hasNextPage) {
-      await this.getOrganizations(pageInfo.endCursor, records)
-    }
+    // if (pageInfo.hasNextPage) {
+    //   await this.getOrganizations(pageInfo.endCursor, records)
+    // }
 
     return records
   }
