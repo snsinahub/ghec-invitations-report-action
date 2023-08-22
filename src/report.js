@@ -254,6 +254,7 @@ class Report {
       await this.getPendingInvitations(owner, invitees)
       await this.getFailedInvitations(owner, invitees)
     }
+    console.log("INVITEES:", JSON.stringify(invitees))
 
     // make CSV
     const csv = stringify(invitees, {})
