@@ -94,7 +94,7 @@ class Report {
     });
     const orgs = await graphqlWithAuth(
       ` {
-            enterprise(slug: $enterprise") {
+            enterprise(slug: "${this.enterprise}") {
               name
               organizations(first: 100) {
                 nodes {
