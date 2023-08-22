@@ -41,6 +41,8 @@ async function run () {
     
     report.reportDate = dayjs().toISOString()
     const {before, after} = await report.create()
+    console.log("report before:", JSON.stringify(before))
+    console.log("reports after:", JSON.stringify(after))
 
     core.setOutput('base_sha', before)
     core.setOutput('head_sha', after)
