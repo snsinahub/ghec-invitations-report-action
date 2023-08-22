@@ -2,6 +2,7 @@ const dayjs = require('dayjs')
 const stringify = require('csv-stringify/lib/sync')
 const { graphql } = require("@octokit/graphql");
 const { fetch } = require("node-fetch");
+const { Octokit } = require("@octokit/rest");
 
 
 /**
@@ -50,9 +51,8 @@ class Report {
    * @param {String} options.repo         Oganization repository
    * @param {String} [options.enterprise] GitHub Enterprise Cloud slug
    */
-  constructor(octokit, {fp, owner, repo, enterprise = '', token}) {
+  constructor({fp, owner, repo, enterprise = '', token}) {
     
-    this.octokit = octokit
 
     this.path = fp
     this.name = 'github-actions[bot]'
@@ -63,7 +63,15 @@ class Report {
     this.token = token
 
     this.date = dayjs().toISOString()
+    this.ops = {
+      auth: this.token,
+      request: {
+        fetch: fetch,
+      },
+    }
+    this.octokit = new Octokit(this.ops);
     console.log("after")
+
   }
 
   /**
@@ -75,31 +83,29 @@ class Report {
    */
   async getOrganizations(cursor = null, records = []) {
     console.log("enterprise:", this.enterprise)
-    // const {
-    //   enterprise: {
-    //     organizations: {nodes, pageInfo},
-    //   },
-    // } 
-    // const graphqlWithAuth = graphql.defaults({
-    //   headers: {
-    //       authorization: `token ${this.token}`,          
-    //   },
-    //   request: {
-    //     fetch: fetch,
-    //   },
-    // });
-    // const orgs = await this.octokit.graphql(
-    //   ` query ($enterprise: String!) {
-    //         enterprise(slug: $enterprise") {
-    //           name
-    //           organizations(first: 100) {
-    //             nodes {
-    //               login
-    //             }                
-    //           }
-    //         }
-    //       }`
-    // )
+    
+    const graphqlWithAuth = graphql.defaults({
+      headers: {
+          authorization: `token ${this.token}`,          
+      },
+      request: {
+        fetch: fetch,
+      },
+    });
+    const orgs = await graphqlWithAuth(
+      ` query ($enterprise: String!) {
+            enterprise(slug: $enterprise") {
+              name
+              organizations(first: 100) {
+                nodes {
+                  login
+                }                
+              }
+            }
+          }`
+    )
+
+
 
     console.log("SOME", JSON.stringify(orgs))
 

@@ -1,7 +1,6 @@
 const path = require('path')
 const core = require('@actions/core')
 const github = require('@actions/github')
-const { Octokit, App } = require("octokit");
 const dayjs = require('dayjs')
 const { fetch } = require("node-fetch");
 
@@ -24,18 +23,13 @@ async function run () {
 
     const enterprise = core.getInput('enterprise', {required: false})
     const token = core.getInput('token', {required: true})
-    const octokit = new Octokit({ 
-      auth: token,
-      request: {
-        fetch: fetch,
-      },
-    });
+    
 
     const {owner, repo} = github.context.repo
     console.log("owner:", owner, repo)
     console.log("before")
 
-    const report = new Report(octokit, {
+    const report = new Report({
       fp: reportPath,
       name: committerName,
       email: committerEmail,
