@@ -20,7 +20,7 @@ outputs:
     description: 'Report head SHA'
 
 runs:
-  using: 'node16'
+  using: 'node18'
   main: 'src/index.js'
 
 branding:
